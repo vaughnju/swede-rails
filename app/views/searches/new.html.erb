@@ -1,0 +1,12 @@
+
+<h1>New Swedemom Price Lookup</h1>
+<%= form_tag("/search", method: "post") do %>
+  <%= label_tag(:q, "Enter keywords") %>
+  <%= text_field_tag(:q) %>
+  <br/><br/>
+  Databases: 
+  <%= check_box_tag :ebay, nil, true, :name => "ebay" %> eBay
+  <%= check_box_tag :swedemom, nil, false, :name => "swedemom" %> Swedemom
+  <br/><br/>
+  <%= submit_tag("Search") %>
+<% end %>

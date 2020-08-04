@@ -1,0 +1,24 @@
+<div id="results">
+  <h1><%= params['q'].capitalize %>:</h1>
+  <table class="table table-striped">
+    <% @objects.each do |object|%>
+    <tr class="<%= cycle('even', 'odd') -%>" id="Posts">
+      <td>
+        <img src=<%= object["galleryURL"].first %> />
+      </td>
+      <td class="title">
+        <a href=<%= object["viewItemURL"].first%> target="_blank"><%= object["title"].first %></a>
+      </td>
+      <td>
+        <%= object["sellingStatus"].first["sellingState"].first %>
+      </td>
+      <td>
+        <%= object["listingInfo"].first["endTime"].first %>
+      </td>
+      <td class="price">
+        $<%= object["sellingStatus"].first["convertedCurrentPrice"].first["__value__"] %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
