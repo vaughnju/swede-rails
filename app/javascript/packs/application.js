@@ -17,9 +17,18 @@ require("jquery_ujs");
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-window.$("Posts tr").each(function() {
+//import $ from 'jquery';
+$(document).ready(function() {
+  $("saleState").each(function(){
+    if(this.text == "EndedWithSales"){
+      console.log("===sucessful sale===")
+    }
+  })
+})
+/*document.getElementsByClassName("saleState").each(function() {
   var sellState = window.$(this).find("td:second-child").text();
   if(sellState == "EndedWithSales"){
     window.$(this).find("td:second-child").addClass("sold");
+    console.log("===sucessful sale===")
   }
-});
+});*/

@@ -17,6 +17,7 @@ class SearchesController < ApplicationController
       if (ebay || swedemom) && search_term != ""
         #calculate average and trending
         if ebay
+          #puts "==="+ebay["findCompletedItemsResponse"].first["searchResult"].first["item"].first["shippingInfo"].first["shippingServiceCost"].first["__value__"]+"==="
           @objects = ebay["findCompletedItemsResponse"].first["searchResult"].first["item"]
         end
       else

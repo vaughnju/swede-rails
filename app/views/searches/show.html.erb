@@ -1,6 +1,25 @@
+
 <div id="results">
   <h1><%= params['q'].capitalize %>:</h1>
   <table class="table table-striped">
+    <th>
+      Image
+    </th>
+    <th>
+      Title
+    </th>
+    <th>
+      Sold
+    </th>
+    <th>
+      Time
+    </th>
+    <th>
+      Price
+    </th>
+    <th>
+      Shipping
+    </th>
     <% @objects.each do |object|%>
     <tr class="<%= cycle('even', 'odd') -%>" id="Posts">
       <td>
@@ -9,7 +28,7 @@
       <td class="title">
         <a href=<%= object["viewItemURL"].first%> target="_blank"><%= object["title"].first %></a>
       </td>
-      <td>
+      <td class="saleState">
         <%= object["sellingStatus"].first["sellingState"].first %>
       </td>
       <td>
@@ -17,6 +36,9 @@
       </td>
       <td class="price">
         $<%= object["sellingStatus"].first["convertedCurrentPrice"].first["__value__"] %>
+      </td>
+      <td class="shipping">
+        $<%= object["shippingInfo"].first["shippingServiceCost"].first["__value__"] %>
       </td>
     </tr>
     <% end %>
