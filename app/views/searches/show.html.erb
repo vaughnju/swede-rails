@@ -4,7 +4,7 @@
   <p>Average: $<%= number_with_precision(@avgSale, :precision => 2) %></p>
   <p>Total Posts: <%= @objects.length() %> Total Sales: <%= @sales %></p>
   <p>Trending: <%= @trending %></p>
-  <%= line_chart @saleDate, height: "300px" %>
+  <%= @saleDate %>
   <table class="table table-striped">
     <th>
       Image
@@ -25,14 +25,14 @@
       Shipping
     </th>
     <% @objects.each do |object|%>
-    <tr class="<%= cycle('even', 'odd') -%>" id="Posts">
+    <tr class="<%= cycle('even', 'odd') -%> <%= object["sellingStatus"].first["sellingState"].first %>" id="Posts">
       <td>
         <img src=<%= object["galleryURL"].first %> />
       </td>
       <td class="title">
         <a href=<%= object["viewItemURL"].first%> target="_blank"><%= object["title"].first %></a>
       </td>
-      <td class="saleState <%= object["sellingStatus"].first["sellingState"].first %>">
+      <td class="saleState ">
         <%= object["sellingStatus"].first["sellingState"].first %>
       </td>
       <td>

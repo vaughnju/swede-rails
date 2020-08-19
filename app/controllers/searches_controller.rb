@@ -1,5 +1,10 @@
+#require 'fusioncharts-rails'
 class SearchesController < ApplicationController
   def new
+  end
+  # layout false
+  def HomeView
+    
   end
   
   def show
@@ -45,7 +50,7 @@ class SearchesController < ApplicationController
             if post["sellingStatus"].first["sellingState"].first == "EndedWithSales"
               @total += post["sellingStatus"].first["convertedCurrentPrice"].first["__value__"].to_f
               @sales += 1
-              @saleDate.push(post["listingInfo"].first["endTime"].first)
+              @saleDate.push(post["listingInfo"].first["endTime"].first, post["sellingStatus"].first["convertedCurrentPrice"].first["__value__"])
               if DateTime.parse(post["listingInfo"].first["endTime"].first) > @date - 30.days
                 @late += 1
               elsif DateTime.parse(post["listingInfo"].first["endTime"].first) > @date - 60.days
