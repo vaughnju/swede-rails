@@ -1,6 +1,10 @@
 
 <div id="results">
   <h1><%= params['q'].capitalize %>:</h1>
+  <p>Average: $<%= number_with_precision(@avgSale, :precision => 2) %></p>
+  <p>Total Posts: <%= @objects.length() %> Total Sales: <%= @sales %></p>
+  <p>Trending: <%= @trending %></p>
+  <%= line_chart @saleDate, height: "300px" %>
   <table class="table table-striped">
     <th>
       Image
@@ -28,17 +32,21 @@
       <td class="title">
         <a href=<%= object["viewItemURL"].first%> target="_blank"><%= object["title"].first %></a>
       </td>
-      <td class="saleState">
+      <td class="saleState <%= object["sellingStatus"].first["sellingState"].first %>">
         <%= object["sellingStatus"].first["sellingState"].first %>
       </td>
       <td>
-        <%= object["listingInfo"].first["endTime"].first %>
+        <%= Date.parse(object["listingInfo"].first["endTime"].first) %>
       </td>
       <td class="price">
         $<%= object["sellingStatus"].first["convertedCurrentPrice"].first["__value__"] %>
       </td>
       <td class="shipping">
-        $<%= object["shippingInfo"].first["shippingServiceCost"].first["__value__"] %>
+        <% if object["shippingInfo"].first["shippingServiceCost"] %>
+          <%= object["shippingInfo"].first["shippingServiceCost"].first["__value__"] %>
+        <% else %>
+          missing
+        <% end %>
       </td>
     </tr>
     <% end %>

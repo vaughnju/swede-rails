@@ -1,7 +1,9 @@
-document.getElementsByClassName("saleState").each(function() {
-  var sellState = window.$(this).find("td:second-child").text();
-  if(sellState == "EndedWithSales"){
-    window.$(this).find("td:second-child").addClass("sold");
-    console.log("===sucessful sale===")
-  }
-});
+import $ from 'jquery';
+$(document).ready(function() {
+  $("saleState").each(function(){
+    if($(this).text == "EndedWithSales"){
+      console.log("===sucessful sale===");
+      //item.addClass("sold");
+    }
+  })
+})

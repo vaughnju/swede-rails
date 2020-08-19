@@ -9,7 +9,8 @@ require("@rails/activestorage").start();
 require("channels");
 require("jquery");
 require("jquery_ujs");
-
+require("chartkick")
+require("chart.js")
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -17,14 +18,7 @@ require("jquery_ujs");
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-//import $ from 'jquery';
-$(document).ready(function() {
-  $("saleState").each(function(){
-    if(this.text == "EndedWithSales"){
-      console.log("===sucessful sale===")
-    }
-  })
-})
+
 /*document.getElementsByClassName("saleState").each(function() {
   var sellState = window.$(this).find("td:second-child").text();
   if(sellState == "EndedWithSales"){
