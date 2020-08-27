@@ -10,4 +10,6 @@
   <br/><br/>
   <%= submit_tag("Search") %>
 <% end %>
-
+<% if @objects %>
+  <% render "searches/show" %> 
+<% end %>

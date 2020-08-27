@@ -2,10 +2,6 @@
 class SearchesController < ApplicationController
   def new
   end
-  # layout false
-  def HomeView
-    
-  end
   
   def show
     @avgSale = 0.0
